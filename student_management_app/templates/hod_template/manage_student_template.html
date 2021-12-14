@@ -1,0 +1,302 @@
+{% extends 'hod_template/base_template.html' %}
+
+{% block page_title %}
+    All Student Information
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+<html>
+<head>
+    <style>
+          @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+          * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+
+  background: whitesmoke;
+
+}
+.container {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact input[type="tel"],
+#contact input[type="url"],
+#contact textarea,
+#contact button[type="submit"] {
+  font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+}
+
+#contact {
+  background: #F9F9F9;
+  padding: 25px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+    padding-top: 40px;
+    width: 100%;
+   border: 3px solid #1399DC; padding: 10px;
+
+
+}
+
+
+#contact h3 {
+  display: block;
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+#contact h4 {
+  margin: 5px 0 15px;
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+fieldset {
+  border: medium none !important;
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact input[type="tel"],
+#contact input[type="url"],
+#contact textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+}
+
+#contact input[type="text"]:hover,
+#contact input[type="email"]:hover,
+#contact input[type="tel"]:hover,
+#contact input[type="url"]:hover,
+#contact textarea:hover {
+  -webkit-transition: border-color 0.3s ease-in-out;
+  -moz-transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+  border: 1px solid #aaa;
+}
+
+#contact textarea {
+  height: 100px;
+  max-width: 100%;
+  resize: none;
+}
+
+#contact button[type="submit"] {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #4CAF50;
+  color: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+#contact button[type="submit"]:hover {
+  background: #43A047;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#contact button[type="submit"]:active {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.copyright {
+  text-align: center;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  outline: 0;
+  border: 1px solid #aaa;
+}
+
+::-webkit-input-placeholder {
+  color: #888;
+}
+
+:-moz-placeholder {
+  color: #888;
+}
+
+::-moz-placeholder {
+  color: #888;
+}
+
+:-ms-input-placeholder {
+  color: #888;
+}
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: .5em;
+    &:last-child {
+        margin-bottom: 0;
+    }
+     .form-field {
+         display: flex;
+         flex-wrap: wrap;
+
+         padding-top: 40px;
+     }
+
+
+     h3{
+     margin-top: 30px;}
+          }
+          .row{
+              max-font-size: 700px;
+          }
+   table {
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
+}
+#btnn{
+ cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #1399DC;
+  color: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+
+}
+btnn:hover {
+  background: #1399DC;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+btnn:active{
+     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+    </style>
+</head>
+<body>
+<div class="container">
+
+        <div class="container-fluid">
+
+            <a id="btnn" class="btn btn-primary" href="{% url 'add_student' %}" role="button" style="background-color: #1399DC; float: right;">Join New Student</a> <br/>&nbsp;
+            
+            {% if messages %}
+                                <div class="form-group">
+                                <div class="col-12">
+                                    {% for message in messages %}
+                                    {% if message.tags == "error" %}
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% elif message.tags == "success" %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                                </div>
+                                {% endif %}
+
+            <div class="row">
+
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card">
+
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Gender</th>
+                                <th>Profile Pic</th>
+                                <th>Start Year</th>
+                                <th>End Year</th>
+                                <th>Course</th>
+                                <th>Change</th>
+                                <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for student in students %}
+                                <tr>
+                                <td>{{ student.admin.id }}</td>
+                                <td>{{ student.admin.first_name }}</td>
+                                <td>{{ student.admin.last_name }}</td>
+                                <td>{{ student.admin.username }}</td>
+                                <td>{{ student.admin.email }}</td>
+                                <td>{{ student.address }}</td>
+                                <td>{{ student.gender }}</td>
+                                <td> <img src="{{ student.profile_pic }}" style="width: 100px;" /> </td>
+                                <td>{{ student.session_year_id.session_start_year }}</td>
+                                <td>{{ student.session_year_id.session_end_year }}</td>
+                                <td>{{ student.course_id.course_name }}</td>
+                              <td>
+                                    <a href="{% url 'edit_student' student.admin.id %}" class="btn btn-success">Change</a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'delete_student' student.admin.id %}" class="btn btn-danger">Delete</a>
+                                </td>
+                                </tr>
+                                {% endfor %}
+                                
+                            </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                        </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+</div></body></html>
+
+  {% endblock main_content %}

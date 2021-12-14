@@ -1,0 +1,196 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Quicksand", sans-serif;
+}
+        body{
+
+  display: flex;
+  flex-direction: row;
+  background-color: #b4a5a5;
+}
+
+
+        .side-bar {
+
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 17rem;
+  min-height: 100%;
+  background-color: #1399DC;
+            float: right;
+}
+        .side-bar .logo-top  {
+  padding: 1em;
+  background-color: #0c525d;
+}
+.logo-top1 {
+  padding: 1em;
+  background-color: #00cd5a;
+}
+.side-bar .logo-top img {
+  width: 90%;
+  height: auto;
+}
+.side-bar ul {
+  padding: 1em;
+  margin: 0;
+  list-style-type: none;
+}
+
+.side-bar ul li {
+  margin: 0.5rem 0;
+  padding: 0.5em;
+  width: 100%;
+  text-align: left;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.side-bar ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+.side-bar ul li:hover {
+  background-color: #864879;
+}
+
+.side-bar ul li.active {
+  background-color: #e9a6a6;
+  -webkit-transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.side-bar ul li.active a {
+  -webkit-transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  color: #864879;
+}
+
+@media (max-width: 768px) {
+    .side-bar {
+        width: 7.5rem;
+    }
+
+    .side-bar .logo-top img {
+        display: none;
+    }
+
+    .side-bar .logo-top svg {
+        width: 80%;
+        height: auto;
+    }
+
+    .side-bar ul li {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+}
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="main-sidebar sidebar-dark-primary elevation-4" style="background: #1399DC; ">
+      <!-- Brand Logo -->
+
+
+      <!-- Sidebar -->
+      <div class="side-bar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="logo-top" style="text-align: center;">
+            <span class="brand-text font-weight-light" style="text-align: center; color: black;">E-study Portal</span>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+          <li class="nav-item logo-top1" style="text-align: center">
+              <a href="{% url 'staff_profile' %}" class="d-block" style="color: black;">{{ user.first_name }} {{ user.last_name }}</a>
+
+          </li>
+
+            <li class="nav-item">
+              {% url 'staff_take_attendance' as staff_take_attendance %}
+              <a href="{{ staff_take_attendance }}" class="nav-link {% if request.path == staff_take_attendance %} active {% endif %}" style="color: black;">
+                <i class="nav-icon fas fa-calendar-plus"></i>
+                <p>
+                  Take Attendance
+                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
+                </p>
+              </a>
+            </li>
+
+           <!-- <li class="nav-item">
+              {% url 'staff_update_attendance' as staff_update_attendance %}
+              <a href="{{ staff_update_attendance }}" class="nav-link {% if request.path == staff_update_attendance %} active {% endif %}">
+                <i class="nav-icon fas fa-calendar-alt"></i>
+                <p>
+                  View Update Attendance
+                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
+                </p>
+              </a>
+            </li>-->
+
+            <li class="nav-item">
+              {% url 'staff_add_result' as staff_add_result %}
+              <a href="{{ staff_add_result }}" class="nav-link {% if request.path == staff_add_result %} active {% endif %}" style="color: black;">
+                <i class="nav-icon fas fa-tasks"></i>
+                <p>
+                  Add Result
+                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'staff_apply_leave' as staff_apply_leave %}
+              <a href="{{ staff_apply_leave }}" class="nav-link {% if request.path == staff_apply_leave %} active {% endif %}" style="color: black;">
+                <i class="nav-icon fas fa-envelope-open-text"></i>
+                <p>
+                  Apply Leave
+                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'staff_feedback' as staff_feedback %}
+              <a href="{{ staff_feedback }}" class="nav-link {% if request.path == staff_feedback %} active {% endif %}" style="color: black;">
+                <i class="nav-icon fas fa-comments"></i>
+                <p>
+                  Feedback
+                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'logout_user' as logout_user %}
+              <a href="{{ logout_user }}" class="nav-link {% if request.path == logout_user %} active {% endif %}" style="color: black;">
+                <i class="nav-icon fas fa-power-off mr-2"></i>
+                <p>
+                  Logout
+                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
+                </p>
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </div>

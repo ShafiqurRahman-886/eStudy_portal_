@@ -1,0 +1,246 @@
+{% extends 'student_template/base_template.html' %}
+
+{% block page_title %}
+    Results of All Subject
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+<html>
+<head>
+    <style>
+          @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+          * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+
+  background: whitesmoke;
+}
+.container {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact input[type="tel"],
+#contact input[type="url"],
+#contact textarea,
+#contact button[type="submit"] {
+  font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+}
+
+#contact {
+  background: #F9F9F9;
+  padding: 25px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+    padding-top: 40px;
+    width: 100%;
+   border: 3px solid #1399DC; padding: 10px;
+
+
+}
+
+
+#contact h3 {
+  display: block;
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+#contact h4 {
+  margin: 5px 0 15px;
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+fieldset {
+  border: medium none !important;
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact input[type="tel"],
+#contact input[type="url"],
+#contact textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+}
+
+#contact input[type="text"]:hover,
+#contact input[type="email"]:hover,
+#contact input[type="tel"]:hover,
+#contact input[type="url"]:hover,
+#contact textarea:hover {
+  -webkit-transition: border-color 0.3s ease-in-out;
+  -moz-transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+  border: 1px solid #aaa;
+}
+
+#contact textarea {
+  height: 100px;
+  max-width: 100%;
+  resize: none;
+}
+
+#contact button[type="submit"] {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #4CAF50;
+  color: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+#contact button[type="submit"]:hover {
+  background: #43A047;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#contact button[type="submit"]:active {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.copyright {
+  text-align: center;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  outline: 0;
+  border: 1px solid #aaa;
+}
+
+::-webkit-input-placeholder {
+  color: #888;
+}
+
+:-moz-placeholder {
+  color: #888;
+}
+
+::-moz-placeholder {
+  color: #888;
+}
+
+:-ms-input-placeholder {
+  color: #888;
+}
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: .5em;
+    &:last-child {
+        margin-bottom: 0;
+    }
+     .form-field {
+         display: flex;
+         flex-wrap: wrap;
+
+         padding-top: 40px;
+     }
+
+
+     h3{
+     margin-top: 30px;}
+          }
+          .row{
+              max-font-size: 700px;
+          }
+   table {
+  border-collapse: collapse;
+       width: 100%;
+}
+
+th, td {
+  border: 1px solid black;
+}
+    </style>
+</head>
+<body>
+<div class="container">
+        <div class="container-fluid">
+
+            
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary" style="margin-top: 50px;">
+                        <div class="card-header" style="background-color: #1399DC;">
+                            <h3 class="card-title">All Requested Leaves</h3>
+                        </div>
+
+                        <div class="card-body">
+                           <div class="table-responsive">
+                                <table class="table" >
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th>#ID</th>
+                                        <th>Subject</th>
+                                        <th>Assignments Marks</th>
+                                        <th>Exam Marks</th>
+                                        <th>status</th>
+                                    </tr>
+                                    </thead>
+                                    
+                                    {% for row in student_result %}
+                                    <tr>
+                                        <td>{{ row.id }}</td>
+                                        <td>{{ row.subject_id.subject_name }}</td>
+                                        <td>{{ row.subject_assignment_marks }}</td>
+                                        <td>{{ row.subject_exam_marks }}</td>
+                                        <td>
+                                            {% if row.subject_exam_marks >= 40 %}
+                                                <span class="alert alert-success">Pass</span>
+                                            {% else %}
+                                                <span class="alert alert-danger">Fail</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+      </div>
+</body>
+  {% endblock main_content %}
+
+{% block custom_js %}
+
+{% endblock custom_js %}

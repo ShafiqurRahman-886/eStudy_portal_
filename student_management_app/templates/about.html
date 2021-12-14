@@ -1,0 +1,230 @@
+{% extends 'frontendbase.html' %}
+{% load static %} 
+
+{% block content %}
+<style>
+.col-sm-4{
+
+
+}
+#image{
+    width: 300px;
+    height: 340px;
+}
+</style>
+<body>
+  <!-- Fixed navbar -->
+  <div class="navbar navbar-inverse navbar-fixed-top headroom" >
+    <div class="container">
+      <div class="navbar-header">
+        <!-- Button for smallest screens -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <a class="navbar-brand" href="#"><img src="{% static 'assets/images/logo.png'  %}" alt="Stusent Management System"></a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav pull-right">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li class="active"><a href="{% url 'about' %}">About Us</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+          <li><a class="btn" href="{% url 'login' %}">Login</a></li>
+
+
+
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div> 
+  <!-- /.navbar -->
+
+  <header id="head" class="secondary"></header>
+
+  <!-- container -->
+  <div class="container">
+
+    <ol class="breadcrumb">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li class="active">About</li>
+    </ol>
+
+    <div class="row">
+      
+      <!-- Article main content -->
+      <article class="col-sm-12 maincontent">
+        <header class="page-header">
+          <h1 class="page-title">About us</h1>
+        </header>
+        
+        <p><img src="assets/images/mac.jpg" alt="" class="img-rounded pull-right" width="300" >
+          Using technology as the means of education is new normal. With the increase in internet usage and ease of availability makes E-learning more viable and accessible. It can be concluded that this E-Learning Portal will be beneficial to students, staff, and administration as it provides all the educational resources required
+	   < br>
+          Nowadays, almost all the institutions like schools, colleges, and universities have shifted to an online or hybrid teaching method due to the ongoing pandemic. To successfully reach the course expectations, we require a system that can handle almost all institution chores like the tasks that are driven by admin, course materials uploaded by instructors, and student feedback.
+The E-Study Portal fulfils this system requirement. Here, E-Study Portal acts as a connecting bridge between Institution Admin, Staff, and Students. This system is developed with a simple UI design so that it does not create a barrier in accessing the system. Therefore, it does not require advanced knowledge prior to accessing the E-Study Portal. Thus, we can conclude that it is user-friendly.
+          <div class="row about_blk">
+	   <div class="col-sm-6">
+	   <img src="{% static 'assets/images/case-detail-img-01.jpg'  %}" alt="" >
+	   <h2>Why Choose e_Study Portal?</h2>
+
+       </div>
+	   
+	    <div class="col-sm-6">
+
+		<ul class="ab-links">
+		<li>
+		 <i class="bi bi-laptop"></i><h4>Innovative Technologies</h4>
+		 E-Study Portal is a Highly Flexible, Configurable, and Feature-rich solution as it is built using innovative technologies like Django, HTML, CSS, JavaScript; and to provide high availability, it was deployed on the Cloud platform.</li>
+		<li>
+		 <h4>Free to Use</h4>
+		E-Study Portal is free to use to provide freedom to access, study and share the learning contents whenever you like. It is a cost-effective solution to learn online as it does not require additional software.</li>
+		<li>
+		 <h4>Developer Support</h4>
+		At the e-Study Portal, we provide you with support from our developer team in case of errors. Our Developer Team will try to connect and resolve the issue as soon as it is raised.
+Therefore, you can use our services with ease.
+            <li>
+		 <h4>24X7 Access</h4>
+		E-Study Portal platform is up and running 24x7 so that no barriers can stop one in their personal growth. It helps students, staff, and school admins to access the services at any time.</li>
+		</ul>
+		
+		</div>
+	   </div>
+        
+      </article>
+	  
+	  <div class="container">
+	   <div class="row">
+	  <h2 class="text-center top-space">Meet Our Team Members</h2>
+		<p style="text-align:center;">
+		
+		<div class="team-blk" style="align-content: center;">
+		<div class="row">
+		<div class="col-sm-4"  >
+		   <img id="image" src="{% static 'assets/images/shafiq.jpeg'  %}" alt="" >
+		   <h2>Shafiqur Rahman</h2>
+		   Designer & Developer
+		</div>
+		<div class="col-sm-4" >
+		   <img id="image" src="{% static 'assets/images/Raza.jpeg'  %}" alt="" >
+		   <h2>Raza Pathan</h2>
+Designer
+		</div>
+		<div class="col-sm-4" >
+		   <img id="image" src="{% static 'assets/images/sohel.jpeg'  %}" alt="" >
+		   <h2>Sohel Tharani</h2>
+Desinger & Developer
+		</div>
+
+		<div class="row">
+<div class="col-sm-4" style="margin-left: 200px; margin-top: 60px;" >
+		   <img id="image" src="{% static 'assets/images/Hima.jpeg'  %}" alt="" >
+		   <h2>Himadri Shukla</h2>
+Designer & Tester
+		</div>
+		<div class="col-sm-4" style="margin-top: 60px;">
+		   <img id="image" src="{% static 'assets/images/arbaz.jpeg'  %}" alt="" >
+		   <h2>Ahmed Raza</h2>
+Developer
+		</div>
+
+</div>
+        </div></div>
+
+		
+		</div>
+	   </div>
+	   
+	    </div>
+  </div>  <!-- /container -->
+	   
+	   <div class="container-fluid ab_last"  >
+	   <div class="container">
+	   <div class="row">
+	   
+	   <div class="new-sec">
+	   <h3>
+Choose The Best e_Study Platform In Existence To Start Your Online Studies </h3>
+
+
+	   </div>
+	      </div>
+	   
+	   </div></div>
+	  
+
+
+   
+
+    <footer id="footer">
+
+    <div class="footer1">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-3 widget">
+            <a class="navbar-brand" href="#"><img src="{% static 'assets/images/logo.png'  %}" alt="E-Study Portal"></a>
+            <div class="widget-body">
+              <p>Members_of_Group-D<br>
+                <br>
+                Lambton College in Toronto
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 widget">
+            <h3 class="widget-title">Group Members</h3>
+            <div class="widget-body">
+
+
+	<ul class="links">
+<li>Ahmed Raza</li>
+<li>Himadri Dipeshkumar Shukla</li>
+<li>Mahammad AhmadRaza Pathan</li>
+<li>Sohel Tharani</li>
+<li>Shafiqur Rahman</li>
+	</ul>
+            </div>
+          </div>
+
+		  <div class="col-md-3 widget">
+		 <h3 class="widget-title"> Do You Need Help With Anything?</h3>
+		 <div class="widget-body">
+		 Share your complete details, concerns, and questions using the contact page, and our team will get back to you soon.
+
+		 </div>
+		  </div>
+
+          <div class="col-md-3 widget">
+
+          </div>
+
+        </div> <!-- /row of widgets -->
+      </div>
+    </div>
+
+    <div class="footer2">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p class="simplenav">
+                <a href="{% url 'home' %}">Home</a> |
+                <a href="{% url 'about' %}">About</a> |
+                <a href="{% url 'contact' %}">Contact</a> |
+                <a href="{% url 'login' %}">Login</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 widget">
+            <div class="widget-body">
+              <p class="text-right">
+                Copyright &copy; {% now "Y" %}, Group-D
+              </p>
+            </div>
+          </div>
+
+        </div> <!-- /row of widgets -->
+      </div>
+    </div>
+  </footer>
+
+{% endblock %}

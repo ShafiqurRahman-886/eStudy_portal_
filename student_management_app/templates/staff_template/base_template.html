@@ -1,0 +1,95 @@
+{% load static %}
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>E-study Portal | Student Dashboard</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+<style>
+   * {box-sizing: border-box;}
+
+body {
+  margin: 0;
+    padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: 100%;
+    background-color: whitesmoke;
+}
+.header{
+    width: 100%;
+    text-align: center;
+
+}
+h2{
+    width: 100%;
+    height: 40px;
+    background-color: #1399DC;
+        margin-top: 5px;
+}
+
+</style>
+    {% comment %} For Custom CSS {% endcomment %}
+
+    {% block custom_css %}
+    {% endblock custom_css %}
+
+</head>
+
+<body>
+
+<body>
+  <div class="header">
+
+      <h2>Staff Dashboard -Management Console</h2>
+
+    {% include 'staff_template/sidebar_template.html' with user=user id=id %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">
+                {% block page_title %}
+                {% endblock page_title %}
+              </h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+               <!--  <li class="breadcrumb-item"><a href="{% url 'admin_home' %}">Home</a></li> -->
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+
+      <!-- Main content -->
+      {% block main_content %}
+      {% endblock main_content %}
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    {% include 'staff_template/footer.html' %}
+
+    
+  </div>
+  <!-- ./wrapper -->
+
+
+{% comment %} For Custom JS {% endcomment %}
+{% block custom_js %}
+{% endblock custom_js %}
+
+</body>
+</html>
